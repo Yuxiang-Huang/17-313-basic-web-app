@@ -1,3 +1,8 @@
+const ADD = "plus";
+const SUBTRACT = "minus";
+const MULTIPLY = "multiplied by";
+const DIVIDE = "divided by";
+
 export default function QueryProcessor(query: string): string {
 	console.log(query);
 
@@ -10,14 +15,31 @@ export default function QueryProcessor(query: string): string {
 	}
 
 	// What is 29 plus 53?
-	if (query.toLowerCase().includes("plus")) {
+	if (
+		query.toLowerCase().includes(ADD) ||
+		query.toLowerCase().includes(SUBTRACT) ||
+		query.toLowerCase().includes(MULTIPLY) ||
+		query.toLowerCase().includes(DIVIDE)
+	) {
 		// get the thrid and fourth words and get the sum
 		const numbers = query.toLowerCase().split(" ");
 		const number1 = parseInt(numbers[2]);
 		// remove the quesiton mark, which is the last character
 		const number2 = parseInt(numbers[4].slice(0, -1));
-		const sum = number1 + number2;
-		return sum.toString();
+		if (query.toLowerCase().includes(ADD)) {
+			const sum = number1 + number2;
+			return sum.toString();
+		} else if (query.toLowerCase().includes(SUBTRACT)) {
+			const sum = number1 - number2;
+			return sum.toString();
+		} else if (query.toLowerCase().includes(MULTIPLY)) {
+			const sum = number1 * number2;
+			return sum.toString();
+		} else if (query.toLowerCase().includes(DIVIDE)) {
+			const sum = number1 / number2;
+			return sum.toString();
+		}
+		return "";
 	}
 
 	if (
