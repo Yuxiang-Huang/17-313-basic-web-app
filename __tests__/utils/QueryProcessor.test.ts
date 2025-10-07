@@ -29,4 +29,28 @@ describe("QueryProcessor", () => {
 		const response: string = QueryProcessor(query);
 		expect(response).toBe("yh4");
 	});
+
+	test("should return largest number", () => {
+		const query = "Which of the following numbers is the largest: 1, 2, 3?";
+		const response: string = QueryProcessor(query);
+		expect(response).toBe("3");
+	});
+
+	test("should return largest number", () => {
+		const query = "Which of the following numbers is the largest: 23, 100, 10?";
+		const response: string = QueryProcessor(query);
+		expect(response).toBe("100");
+	});
+
+	test("should return the sum of two numbers", () => {
+		const query = "What is 1 plus 2?";
+		const response: string = QueryProcessor(query);
+		expect(response).toBe("3");
+	});
+
+	test("should return the sum of two numbers", () => {
+		const query = "What is 23 plus 76?";
+		const response: string = QueryProcessor(query);
+		expect(response).toBe("99");
+	});
 });
