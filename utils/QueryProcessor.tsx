@@ -1,5 +1,9 @@
 export default function QueryProcessor(query: string): string {
-	if (query.toLowerCase().includes("andrew id")) {
+	if (query.toLowerCase().includes("what is your name?")) {
+		return "yh4";
+	}
+
+	if (query.toLowerCase().includes("what is your andrew id?")) {
 		return "yh4";
 	}
 
@@ -9,10 +13,6 @@ export default function QueryProcessor(query: string): string {
 			"English poet, playwright, and actor, widely regarded as the greatest " +
 			"writer in the English language and the world's pre-eminent dramatist."
 		);
-	}
-
-	if (query.toLowerCase().includes("name")) {
-		return "yh4";
 	}
 
 	return "";
