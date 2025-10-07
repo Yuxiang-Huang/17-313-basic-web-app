@@ -20,25 +20,18 @@ export default function QueryProcessor(query: string): string {
 		return sum.toString();
 	}
 
-	// if (
-	// 	query
-	// 		.toLowerCase()
-	// 		.includes("which of the following numbers is the largest:")
-	// ) {
-	// 	return "80";
-	// 	console.log(query);
-	// 	// get the last three words and get the highest number
-	// 	const numbers = query
-	// 		.toLowerCase()
-	// 		.split(" ")
-	// 		.slice(-3)
-	// 		.join(" ")
-	// 		.split(", ")
-	// 		.map(Number)
-	// 		.sort((a, b) => b - a)[0];
-
-	// 	return numbers.toString();
-	// }
+	if (
+		query
+			.toLowerCase()
+			.includes("which of the following numbers is the largest:")
+	) {
+		const numbers = query.toLowerCase().split(" ");
+		const number1 = parseInt(numbers[numbers.length - 3]);
+		const number2 = parseInt(numbers[numbers.length - 2]);
+		const number3 = parseInt(numbers[numbers.length - 1].slice(0, -1));
+		const highestNumber = Math.max(number1, number2, number3);
+		return highestNumber.toString();
+	}
 
 	if (query.toLowerCase().includes("shakespeare")) {
 		return (
