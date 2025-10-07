@@ -1,4 +1,6 @@
 export default function QueryProcessor(query: string): string {
+	console.log(query);
+
 	if (query.toLowerCase().includes("what is your name?")) {
 		return "yh4";
 	}
@@ -7,30 +9,36 @@ export default function QueryProcessor(query: string): string {
 		return "yh4";
 	}
 
-	if (query.toLowerCase().includes("What is 97 plus 57")) {
-		return "154";
+	// What is 29 plus 53?
+	if (query.toLowerCase().includes("plus")) {
+		// get the thrid and fourth words and get the sum
+		const numbers = query.toLowerCase().split(" ");
+		const number1 = parseInt(numbers[2]);
+		// remove the quesiton mark, which is the last character
+		const number2 = parseInt(numbers[4].slice(0, -1));
+		const sum = number1 + number2;
+		return sum.toString();
 	}
 
-	if (query.toLowerCase().includes("What is 29 plus 53?")) {
-		return "82";
-	}
+	// if (
+	// 	query
+	// 		.toLowerCase()
+	// 		.includes("which of the following numbers is the largest:")
+	// ) {
+	// 	return "80";
+	// 	console.log(query);
+	// 	// get the last three words and get the highest number
+	// 	const numbers = query
+	// 		.toLowerCase()
+	// 		.split(" ")
+	// 		.slice(-3)
+	// 		.join(" ")
+	// 		.split(", ")
+	// 		.map(Number)
+	// 		.sort((a, b) => b - a)[0];
 
-	if (
-		query
-			.toLowerCase()
-			.includes("Which of the following numbers is the largest:")
-	) {
-		// get the last three words and get the highest number
-		const number = query
-			.toLowerCase()
-			.split(" ")
-			.slice(-3)
-			.join(" ")
-			.split(", ")
-			.map(Number)
-			.sort((a, b) => b - a)[0];
-		return number.toString();
-	}
+	// 	return numbers.toString();
+	// }
 
 	if (query.toLowerCase().includes("shakespeare")) {
 		return (
