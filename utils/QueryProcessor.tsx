@@ -15,6 +15,23 @@ export default function QueryProcessor(query: string): string {
 		return "82";
 	}
 
+	if (
+		query
+			.toLowerCase()
+			.includes("Which of the following numbers is the largest:")
+	) {
+		// get the last three words and get the highest number
+		const number = query
+			.toLowerCase()
+			.split(" ")
+			.slice(-3)
+			.join(" ")
+			.split(", ")
+			.map(Number)
+			.sort((a, b) => b - a)[0];
+		return number.toString();
+	}
+
 	if (query.toLowerCase().includes("shakespeare")) {
 		return (
 			"William Shakespeare (26 April 1564 - 23 April 1616) was an " +
